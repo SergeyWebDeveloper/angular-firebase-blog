@@ -6,6 +6,7 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { DashbordPageComponent } from './dashbord-page/dashbord-page.component';
 import { CreatePageComponent } from './create-page/create-page.component';
 import { EditPageComponent } from './edit-page/edit-page.component';
+import {MatToolbarModule} from '@angular/material';
 
 @NgModule({
   declarations: [AdminLayoutComponent, LoginPageComponent, DashbordPageComponent, CreatePageComponent, EditPageComponent],
@@ -31,7 +32,8 @@ import { EditPageComponent } from './edit-page/edit-page.component';
           }
         ]
       }
-    ])
+    ]),
+    MatToolbarModule
   ],
   exports: [RouterModule]
 })

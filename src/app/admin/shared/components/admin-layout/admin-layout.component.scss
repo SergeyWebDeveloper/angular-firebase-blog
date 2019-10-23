@@ -1,0 +1,28 @@
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  a {
+    text-decoration: none;
+    color: #fff;
+  }
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  li {
+    &+li {
+      margin-left: 15px;
+    }
+    &.active {
+      a {
+        text-decoration: underline;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+.admin-list-menu {
+  display: flex;
+}
