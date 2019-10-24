@@ -1,0 +1,12 @@
+.form-login {
+  margin-top: 5vh;
+  display: flex;
+  flex-direction: column;
+  * > {
+    width: 100%;
+  }
+}
+
+.form-login-btn {
+  margin-top: 15px;
+}
