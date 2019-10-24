@@ -10,6 +10,7 @@ import { PostPageComponent } from './post-page/post-page.component';
 // import {MatToolbarModule} from '@angular/material/toolbar';
 import { PostComponent } from './shared/components/post/post.component';
 import {MatButtonModule, MatCardModule, MatGridListModule, MatToolbarModule} from '@angular/material';
+import {SharedModule} from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {MatButtonModule, MatCardModule, MatGridListModule, MatToolbarModule} fro
     MatToolbarModule,
     MatCardModule,
     MatButtonModule,
-    MatGridListModule
+    MatGridListModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

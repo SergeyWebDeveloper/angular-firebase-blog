@@ -1,5 +1,8 @@
 import {Component} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {AuthService} from '../shared/services/auth.service';
+import {Router} from '@angular/router';
+import {IUser} from '../../shared/interfaces/User';
 
 @Component({
   selector: 'app-login-page',
@@ -13,8 +16,8 @@ export class LoginPageComponent {
     password: new FormControl(null, [Validators.required, Validators.minLength(3)])
   });
 
-  constructor() {
-  }
+  constructor(private auth: AuthService, private router: Router) {}
+
   get email() {
     return this.loginForm.get('email');
   }
@@ -25,7 +28,9 @@ export class LoginPageComponent {
 
   onSubmit(event: Event) {
     event.preventDefault();
-    const formValue = this.loginForm.value;
-    this.loginForm.reset();
+    const formValue = this.loginForm.value as IUser;
+    this.auth.login(formValue).subscribe(() => {
+      this.router.navigate(['/admin', 'dashboard']);
+    });
   }
 }
