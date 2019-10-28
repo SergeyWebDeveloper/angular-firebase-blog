@@ -1,5 +1,8 @@
 <h1>Панель Администратора</h1>
 <div class="form-wrapper">
+<!--  <div *ngIf="auth.error$ | async as error">-->
+<!--    {{error}}-->
+<!--  </div>-->
   <form class="form-login" [formGroup]="loginForm" (submit)="onSubmit($event)">
     <mat-form-field>
       <input matInput placeholder="Email" formControlName="email">
@@ -21,7 +24,7 @@
       </mat-error>
     </mat-form-field>
     <div class="form-login-btn">
-      <button mat-raised-button color="accent" [disabled]="loginForm.invalid">Войти</button>
+      <button mat-raised-button color="accent" [disabled]="loginForm.invalid || submitted">Войти</button>
     </div>
   </form>
 

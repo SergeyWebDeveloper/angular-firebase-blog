@@ -1,6 +1,6 @@
 <mat-toolbar color="warn" class="admin-header">
   <a routerLink="/">Angular Admin</a>
-  <ul class="admin-list-menu">
+  <ul class="admin-list-menu" *ngIf="auth.isAuthenticated()">
     <li routerLinkActive="active">
       <a [routerLink]="['/admin','dashboard']">Главная</a>
     </li>
