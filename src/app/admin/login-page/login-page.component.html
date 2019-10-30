@@ -3,7 +3,7 @@
 <!--  <div *ngIf="auth.error$ | async as error">-->
 <!--    {{error}}-->
 <!--  </div>-->
-  <form class="form-login" [formGroup]="loginForm" (submit)="onSubmit($event)">
+  <form class="form" [formGroup]="loginForm" (submit)="onSubmit($event)">
     <mat-form-field>
       <input matInput placeholder="Email" formControlName="email">
       <mat-error *ngIf="email.hasError('required')">

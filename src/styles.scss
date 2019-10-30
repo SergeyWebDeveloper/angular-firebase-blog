@@ -9,3 +9,15 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   margin: 0 auto;
   box-sizing: border-box;
 }
+.form {
+  margin-top: 5vh;
+  display: flex;
+  flex-direction: column;
+  * > {
+    width: 100%;
+  }
+}
+
+.form-login-btn {
+  margin-top: 15px;
+}

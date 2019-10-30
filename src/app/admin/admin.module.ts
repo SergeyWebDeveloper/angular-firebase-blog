@@ -10,6 +10,7 @@ import {MatButtonModule, MatFormFieldModule, MatInputModule, MatSnackBarModule, 
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AuthService} from './shared/services/auth.service';
 import {SharedModule} from '../shared/shared.module';
+import {AuthGuard} from './shared/services/auth.guard';
 
 @NgModule({
   declarations: [AdminLayoutComponent, LoginPageComponent, DashbordPageComponent, CreatePageComponent, EditPageComponent],
@@ -25,13 +26,13 @@ import {SharedModule} from '../shared/shared.module';
             path: 'login', component: LoginPageComponent
           },
           {
-            path: 'dashboard', component: DashbordPageComponent
+            path: 'dashboard', component: DashbordPageComponent, canActivate: [AuthGuard]
           },
           {
-            path: 'create', component: CreatePageComponent
+            path: 'create', component: CreatePageComponent, canActivate: [AuthGuard]
           },
           {
-            path: 'post/:id/edit', component: EditPageComponent
+            path: 'post/:id/edit', component: EditPageComponent, canActivate: [AuthGuard]
           }
         ]
       }
@@ -46,7 +47,7 @@ import {SharedModule} from '../shared/shared.module';
     MatSnackBarModule
   ],
   exports: [RouterModule],
-  providers: [AuthService]
+  providers: [AuthService, AuthGuard]
 })
 
 export class AdminModule {

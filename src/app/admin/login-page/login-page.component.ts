@@ -1,7 +1,7 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../shared/services/auth.service';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Params, Router} from '@angular/router';
 import {IUser} from '../../shared/interfaces/User';
 import {MatSnackBar} from '@angular/material';
 
@@ -10,15 +10,24 @@ import {MatSnackBar} from '@angular/material';
   templateUrl: './login-page.component.html',
   styleUrls: ['./login-page.component.scss']
 })
-export class LoginPageComponent {
+export class LoginPageComponent implements OnInit {
+  private submitted: boolean;
+  private loginForm: FormGroup;
 
-  submitted = false;
-  loginForm = new FormGroup({
-    email: new FormControl(null, [Validators.required, Validators.email]),
-    password: new FormControl(null, [Validators.required, Validators.minLength(3)])
-  });
+  ngOnInit(): void {
+    this.submitted = false;
+    this.loginForm = new FormGroup({
+      email: new FormControl(null, [Validators.required, Validators.email]),
+      password: new FormControl(null, [Validators.required, Validators.minLength(3)])
+    });
+    this.route.queryParams.subscribe((params: Params) => {
+      if (params.loginAgain) {
+        this.openSnackBar('Введите данные для входа');
+      }
+    });
+  }
 
-  constructor(public auth: AuthService, private router: Router, private snackBar: MatSnackBar) {
+  constructor(public auth: AuthService, private router: Router, private snackBar: MatSnackBar, private route: ActivatedRoute) {
   }
 
   get email() {
@@ -44,7 +53,7 @@ export class LoginPageComponent {
       this.submitted = false;
     }, () => {
       // TODO: Не работает как нужно
-      this.auth.error$.subscribe(errorMessage => this.openSnackBar(errorMessage)).unsubscribe();
+      this.auth.error$.subscribe(errorMessage => this.openSnackBar(errorMessage));
       this.submitted = false;
     });
   }
