@@ -47,7 +47,7 @@ import {AuthGuard} from './shared/services/auth.guard';
     MatSnackBarModule
   ],
   exports: [RouterModule],
-  providers: [AuthService, AuthGuard]
+  providers: [AuthGuard]
 })
 
 export class AdminModule {

@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../shared/services/auth.service';
 import {ActivatedRoute, Params, Router} from '@angular/router';
-import {IUser} from '../../shared/interfaces/User';
+import {IUser} from '../../shared/interfaces';
 import {MatSnackBar} from '@angular/material';
 
 @Component({
@@ -23,6 +23,8 @@ export class LoginPageComponent implements OnInit {
     this.route.queryParams.subscribe((params: Params) => {
       if (params.loginAgain) {
         this.openSnackBar('Введите данные для входа');
+      } else if (params.authFailed) {
+        this.openSnackBar('Сессия истекла. Войдите заново.');
       }
     });
   }

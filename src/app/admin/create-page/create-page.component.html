@@ -2,16 +2,14 @@
 <form class="form" [formGroup]="form" (ngSubmit)="submit()">
   <mat-form-field>
     <input matInput placeholder="Title" formControlName="title">
-    <mat-error *ngIf="title.hasError('required')">
+    <mat-error *ngIf="title.touched && title.hasError('required')">
       Поле обязательно для заполнения
     </mat-error>
   </mat-form-field>
-<!--  <mat-form-field>-->
-<!--    <p>Контент</p>-->
-<!--  </mat-form-field>-->
+  <quill-editor formControlName="text"></quill-editor>
   <mat-form-field>
     <input matInput placeholder="Author" formControlName="author">
-    <mat-error *ngIf="author.hasError('required')">
+    <mat-error *ngIf="author.touched && author.hasError('required')">
       Поле обязательно для заполнения
     </mat-error>
   </mat-form-field>
